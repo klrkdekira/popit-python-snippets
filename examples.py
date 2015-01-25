@@ -34,7 +34,7 @@ try:
         instance='sinar-malaysia',
         hostname='popit.mysociety.org',
         api_version='v0.1',
-        api_key='c7fd488c278814dbdc9c63d294c92d01d5795108'
+        api_key='c7fd488c278814dbdc9c63d294c92d01d5795108', # don't bother, this key is invalid
     )
 except Exception as e:
     sys.exit(e)
@@ -148,21 +148,21 @@ log.info('my membership id: {id}'.format(id=membership_id))
 ##### api.memberships section ends
 
 # For testing only, comment these to persist the record
-# log.info('deleting memberships record...')
-# api.memberships(membership_id).delete()
-# log.info('membership deleted :(')
+log.info('deleting memberships record...')
+api.memberships(membership_id).delete()
+log.info('membership deleted :(')
 
-# log.info('deleting posts record...')
-# api.posts(post_id).delete()
-# log.info('post deleted :(')
+log.info('deleting posts record...')
+api.posts(post_id).delete()
+log.info('post deleted :(')
 
-# log.info('deleting my persons record...')
-# api.persons(my_id).delete()
-# log.info('my persons record deleted :(')
+log.info('deleting my persons record...')
+api.persons(my_id).delete()
+log.info('my persons record deleted :(')
 
-# log.info('deleting my organizations record...')
-# api.organizations(sinar_id).delete()
-# log.info('sinar organization record deleted, not again!? :(')
+log.info('deleting my organizations record...')
+api.organizations(sinar_id).delete()
+log.info('sinar organization record deleted, not again!? :(')
 
 # Foot note
 log.info('done')
