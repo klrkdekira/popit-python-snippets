@@ -26,10 +26,10 @@ Let"s construct a PopIt-Python object. Your configuration will be stored here an
 from popit_api import PopIt
 
 api = PopIt(
-instance="sinar-malaysia",
-hostname="popit.mysociety.org",
-api_version="v0.1",
-api_key="yourapikeyhere",
+    instance="sinar-malaysia",
+    hostname="popit.mysociety.org",
+    api_version="v0.1",
+    api_key="yourapikeyhere",
 )
 ```
 
@@ -48,15 +48,19 @@ print(me)
 The response
 
 ```json
-{"result": {"contact_details": [],
-"html_url": "http://sinar-malaysia.popit.mysociety.org/persons/54c48c8fdde553347cbe01e3",
-"id": "54c48c8fdde553347cbe01e3",
-"identifiers": [],
-"links": [],
-"memberships": [],
-"name": "Chow Chee Leong",
-"other_names": [],
-"url": "http://sinar-malaysia.popit.mysociety.org/api/v0.1/persons/54c48c8fdde553347cbe01e3"}}
+{
+  "result": {
+    "contact_details": [],
+    "html_url": "http://sinar-malaysia.popit.mysociety.org/persons/54c48c8fdde553347cbe01e3",
+    "id": "54c48c8fdde553347cbe01e3",
+    "identifiers": [],
+    "links": [],
+    "memberships": [],
+    "name": "Chow Chee Leong",
+    "other_names": [],
+    "url": "http://sinar-malaysia.popit.mysociety.org/api/v0.1/persons/54c48c8fdde553347cbe01e3"
+  }
+}
 
 my_id = me["result"]["id"]
 ```
@@ -70,9 +74,9 @@ my_info = me["result"]
 my_info["other_names"].append({"name": "motionman"})
 my_info["contact_details"].append({
     "label": "Email Address",
-        "type": "email",
-            "value": "motionman@sinarproject.org"
-            })
+    "type": "email",
+    "value": "motionman@sinarproject.org"
+})
 
 result = api.persons(my_id).put(my_info)
 
@@ -81,18 +85,29 @@ print(my_info)
 ```
 
 ```json
-{"contact_details": [{"id": "54c48c90dde553347cbe01e5",
-"label": "Email Address",
-"type": "email",
-"value": "motionman@sinarproject.org"}],
-"html_url": "http://sinar-malaysia.popit.mysociety.org/persons/54c48c8fdde553347cbe01e3",
-"id": "54c48c8fdde553347cbe01e3",
-"identifiers": [],
-"links": [],
-"memberships": [],
-"name": "Chow Chee Leong",
-"other_names": [{"id": "54c48c90dde553347cbe01e4", "name": "motionman"}],
-"url": "http://sinar-malaysia.popit.mysociety.org/api/v0.1/persons/54c48c8fdde553347cbe01e3"}
+{
+  "contact_details": [
+    {
+      "id": "54c48c90dde553347cbe01e5",
+      "label": "Email Address",
+      "type": "email",
+      "value": "motionman@sinarproject.org"
+    }
+  ],
+  "html_url": "http://sinar-malaysia.popit.mysociety.org/persons/54c48c8fdde553347cbe01e3",
+  "id": "54c48c8fdde553347cbe01e3",
+  "identifiers": [],
+  "links": [],
+  "memberships": [],
+  "name": "Chow Chee Leong",
+  "other_names": [
+    {
+      "id": "54c48c90dde553347cbe01e4",
+      "name": "motionman"
+    }
+  ],
+  "url": "http://sinar-malaysia.popit.mysociety.org/api/v0.1/persons/54c48c8fdde553347cbe01e3"
+}
 ```
 
 The result [Person](https://sinar-malaysia.popit.mysociety.org/persons/54c48c8fdde553347cbe01e3#political-career) page.
@@ -114,16 +129,20 @@ sinar_id = sinar["result"]["id"]
 ```
 
 ```json
-{"result": {"contact_details": [],
-"html_url": "http://sinar-malaysia.popit.mysociety.org/organizations/54c48c90dde553347cbe01e6",
-"id": "54c48c90dde553347cbe01e6",
-"identifiers": [],
-"links": [],
-"memberships": [],
-"name": "Sinar Project",
-"other_names": [],
-"posts": [],
-"url": "http://sinar-malaysia.popit.mysociety.org/api/v0.1/organizations/54c48c90dde553347cbe01e6"}}
+{
+  "result": {
+    "contact_details": [],
+    "html_url": "http://sinar-malaysia.popit.mysociety.org/organizations/54c48c90dde553347cbe01e6",
+    "id": "54c48c90dde553347cbe01e6",
+    "identifiers": [],
+    "links": [],
+    "memberships": [],
+    "name": "Sinar Project",
+    "other_names": [],
+    "posts": [],
+    "url": "http://sinar-malaysia.popit.mysociety.org/api/v0.1/organizations/54c48c90dde553347cbe01e6"
+  }
+}
 ```
 
 ### Update
@@ -132,10 +151,10 @@ sinar_id = sinar["result"]["id"]
 sinar_info = sinar["result"]
 sinar_info["contact_details"].append({
     "label": "Email Address",
-        "type": "email",
-            "value": "info@sinarproject.org"
-            })
-            sinar_info["classification"] = "NGO"
+    "type": "email",
+    "value": "info@sinarproject.org"
+})
+sinar_info["classification"] = "NGO"
 
 result = api.organizations(sinar_id).put(sinar_info)
 
@@ -144,20 +163,26 @@ print(sinar_info)
 ```
 
 ```json
-{"classification": "NGO",
-"contact_details": [{"id": "54c48c90dde553347cbe01e7",
-"label": "Email Address",
-"type": "email",
-"value": "info@sinarproject.org"}],
-"html_url": "http://sinar-malaysia.popit.mysociety.org/organizations/54c48c90dde553347cbe01e6",
-"id": "54c48c90dde553347cbe01e6",
-"identifiers": [],
-"links": [],
-"memberships": [],
-"name": "Sinar Project",
-"other_names": [],
-"posts": [],
-"url": "http://sinar-malaysia.popit.mysociety.org/api/v0.1/organizations/54c48c90dde553347cbe01e6"}
+{
+  "classification": "NGO",
+  "contact_details": [
+    {
+      "id": "54c48c90dde553347cbe01e7",
+      "label": "Email Address",
+      "type": "email",
+      "value": "info@sinarproject.org"
+    }
+  ],
+  "html_url": "http://sinar-malaysia.popit.mysociety.org/organizations/54c48c90dde553347cbe01e6",
+  "id": "54c48c90dde553347cbe01e6",
+  "identifiers": [],
+  "links": [],
+  "memberships": [],
+  "name": "Sinar Project",
+  "other_names": [],
+  "posts": [],
+  "url": "http://sinar-malaysia.popit.mysociety.org/api/v0.1/organizations/54c48c90dde553347cbe01e6"
+}
 ```
 
 ### Delete
@@ -174,20 +199,24 @@ Posts
 ```python
 my_post = api.posts.post({
     "label": "IT Department",
-        "organization_id": sinar_id,
-        })
-        print(my_post)
-        ```
+    "organization_id": sinar_id,
+})
+print(my_post)
+```
 
 ```json
-{"result": {"contact_details": [],
-"html_url": "http://sinar-malaysia.popit.mysociety.org/posts/54c48c91dde553347cbe01e8",
-"id": "54c48c91dde553347cbe01e8",
-"label": "IT Department",
-"links": [],
-"memberships": [],
-"organization_id": "54c48c90dde553347cbe01e6",
-"url": "http://sinar-malaysia.popit.mysociety.org/api/v0.1/posts/54c48c91dde553347cbe01e8"}}
+{
+  "result": {
+    "contact_details": [],
+    "html_url": "http://sinar-malaysia.popit.mysociety.org/posts/54c48c91dde553347cbe01e8",
+    "id": "54c48c91dde553347cbe01e8",
+    "label": "IT Department",
+    "links": [],
+    "memberships": [],
+    "organization_id": "54c48c90dde553347cbe01e6",
+    "url": "http://sinar-malaysia.popit.mysociety.org/api/v0.1/posts/54c48c91dde553347cbe01e8"
+  }
+}
 ```
 
 ### Delete
@@ -204,27 +233,31 @@ Memberships
 ```python
 my_membership = api.memberships.post({
     "organization_id": sinar_id,
-        "post_id": post_id,
-            "person_id": my_id,
-                "role": "Software Developer",
-                    "start_date": "2013-05-01",
-                        "end_date": None,
-                        })
-                        print(my_membership)
-                        ```
+    "post_id": post_id,
+    "person_id": my_id,
+    "role": "Software Developer",
+    "start_date": "2013-05-01",
+    "end_date": None,
+})
+print(my_membership)
+```
 
 ```json
-{"result": {"contact_details": [],
-"end_date": None,
-"html_url": "http://sinar-malaysia.popit.mysociety.org/memberships/54c48c91dde553347cbe01e9",
-"id": "54c48c91dde553347cbe01e9",
-"links": [],
-"organization_id": "54c48c90dde553347cbe01e6",
-"person_id": "54c48c8fdde553347cbe01e3",
-"post_id": "54c48c91dde553347cbe01e8",
-"role": "Software Developer",
-"start_date": "2013-05-01",
-"url": "http://sinar-malaysia.popit.mysociety.org/api/v0.1/memberships/54c48c91dde553347cbe01e9"}}
+{
+  "result": {
+    "contact_details": [],
+    "end_date": null,
+    "html_url": "http://sinar-malaysia.popit.mysociety.org/memberships/54c48c91dde553347cbe01e9",
+    "id": "54c48c91dde553347cbe01e9",
+    "links": [],
+    "organization_id": "54c48c90dde553347cbe01e6",
+    "person_id": "54c48c8fdde553347cbe01e3",
+    "post_id": "54c48c91dde553347cbe01e8",
+    "role": "Software Developer",
+    "start_date": "2013-05-01",
+    "url": "http://sinar-malaysia.popit.mysociety.org/api/v0.1/memberships/54c48c91dde553347cbe01e9"
+  }
+}
 ```
 
 ### Delete
